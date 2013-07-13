@@ -33,11 +33,10 @@ class MailHandler < Chef::Handler
 
   def report
     status = success? ? "Successful" : "Failed"
-    if options[:send_statuses].include? status
-      subject = "#{status} Chef run on node #{node.fqdn}"
-
-      from_address = (options[:from_address] == 'chef-client') ? "#{options[:from_address]}@#{node.fqdn}" : options[:from_address]
+    if options[:send_statuses].include? statusfrom_address = (options[:from_address] == 'chef-client') ? "#{options[:from_address]}@#{node.fqdn}" : options[:from_address]
       hostname = (options[:hostname] == 'local') ? node.fqdn : options[:hostname]
+
+      subject = "#{status} Chef run on node #{hostname}"
 
       Chef::Log.debug("mail handler template path: #{options[:template_path]}")
       if File.exists? options[:template_path]
