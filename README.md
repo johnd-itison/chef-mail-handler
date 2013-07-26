@@ -5,7 +5,7 @@ This is a wrapper cookbook to setup and run the [chef-mail-handler gem](http://g
 * [aaronblyth](http://github.com/kisoku/chef-handler-mail/pull/3)
 * [trobock](http://github.com/kisoku/chef-handler-mail/pull/5)
 
-This manually installs the mail handler.  If the maintainers update the gem, I'll change the recipe to use the gem location. Also, if either pull requests mentioned above do not want their changes included here I will remove them.
+This manually installs the mail handler.  If the maintainers update the gem, I'll change the recipe to use the chef_gem. Also, if either pull requests mentioned above do not want their changes included here I will remove them.
 
 In addtion, I've added custom hostname support.
 
@@ -29,6 +29,7 @@ name | description | type | default
 `:from_address` | email address to send from. |  string | chef-client@node.fqdn
 `:send_statuses` | which statuses to trigger email | string, array | ["Successful", "Failed"]
 `:hostname` | a custom hostname | string | node.fqdn
+`:enable` | enable handler | bool | true
 
 # Recipes
 

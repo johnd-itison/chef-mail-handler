@@ -20,19 +20,24 @@
 directory "#{node[:chef_client][:conf_dir]}/handlers/mail" do
   recursive true
   action :nothing
+  only_if node[:chef_client][:enable]
 end.run_action(:create)
 
 cookbook_file "#{node[:chef_client][:conf_dir]}/handlers/mail/mail.rb" do
   source 'mail.rb'
   action :nothing
+  only_if node[:chef_client][:enable]
 end.run_action(:create)
 
 cookbook_file "#{node[:chef_client][:conf_dir]}/handlers/mail/mail.erb" do
   source 'mail.erb'
   action :nothing
+  only_if node[:chef_client][:enable]
 end.run_action(:create)
 
-chef_gem "pony"
+chef_gem "pony" do
+  only_if node[:chef_client][:enable]
+end
 
 chef_handler "MailHandler" do
   source "#{node[:chef_client][:conf_dir]}/handlers/mail/mail"
@@ -43,4 +48,4 @@ chef_handler "MailHandler" do
   	:hostname => node[:mail_handler][:hostname]
   )
   action :nothing
-end.run_action(:enable)
+end.run_action((node[:chef_client][:enable]) ? :enable : :disable)
