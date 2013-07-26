@@ -39,6 +39,7 @@ chef_gem "pony" do
   only_if node[:mail_handler][:enable]
 end
 
+mail_handler_enable = (node[:mail_handler][:enable]) ? :enable : :disable
 chef_handler "MailHandler" do
   source "#{node[:chef_client][:conf_dir]}/handlers/mail/mail"
   arguments(
@@ -48,4 +49,4 @@ chef_handler "MailHandler" do
   	:hostname => node[:mail_handler][:hostname]
   )
   action :nothing
-end.run_action((node[:mail_handler][:enable]) ? :enable : :disable)
+end.run_action(mail_handler_enable)
