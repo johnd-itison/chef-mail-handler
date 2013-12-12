@@ -34,7 +34,7 @@ end.run_action(:create)
 
 chef_gem "pony"
 
-enable_handler = (node[:mail_handler][:enable) ? :enable : :disable
+enable_handler = (node[:mail_handler][:enable]) ? :enable : :disable
 
 chef_handler "MailHandler" do
   source "#{node[:chef_client][:conf_dir]}/handlers/mail/mail"
