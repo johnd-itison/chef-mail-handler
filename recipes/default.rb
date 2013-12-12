@@ -34,6 +34,7 @@ end.run_action(:create)
 
 chef_gem "pony"
 
+enable_handler = (node[:mail_handler][:enable) ? :enable : :disable
 
 chef_handler "MailHandler" do
   source "#{node[:chef_client][:conf_dir]}/handlers/mail/mail"
@@ -44,4 +45,4 @@ chef_handler "MailHandler" do
   	:hostname => node[:mail_handler][:hostname]
   )
   action :nothing
-end.run_action(:enable)
+end.run_action(enable_handler)
