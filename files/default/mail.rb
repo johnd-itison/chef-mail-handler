@@ -55,12 +55,16 @@ class MailHandler < Chef::Handler
 
       body = Erubis::Eruby.new(template).evaluate(context)
 
-      Pony.mail(
+      pony_options = {
         :to => options[:to_address],
         :from => from_address,
         :subject => subject,
         :body => body
-      )
+      }
+      pony_options[:via] = options[:via] if options[:via]
+      pony_options[:via_options] = options[:via_options] if options[:via_options]
+
+      Pony.mail(pony_options)
     end
   end
 end

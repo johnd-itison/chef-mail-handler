@@ -42,7 +42,9 @@ chef_handler "MailHandler" do
   	:to_address => node[:mail_handler][:to_address],
   	:from_address => node[:mail_handler][:from_address],
   	:send_statuses => node[:mail_handler][:send_statuses],
-  	:hostname => node[:mail_handler][:hostname]
+    :hostname => node[:mail_handler][:hostname],
+    :via => node[:mail_handler][:via],
+    :via_options => node[:mail_handler][:via_options]
   )
   action :nothing
 end.run_action(enable_handler)
