@@ -30,6 +30,8 @@ name | description | type | default
 `:send_statuses` | which statuses to trigger email | string, array | ["Successful", "Failed"]
 `:hostname` | a custom hostname | string | node.fqdn
 `:enable` | enable handler | bool | true
+`:via` | Type of transport to send email | string | nil
+`:via_options` | Transport's options | hash | nil
 
 # Recipes
 
