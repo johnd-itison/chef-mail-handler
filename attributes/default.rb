@@ -3,5 +3,7 @@ default[:mail_handler] = {
   :from_address => "chef-client@#{node.fqdn}",
   :send_statuses => ["Successful", "Failed"],
   :hostname => node.fqdn,
-  :enable => true
+  :enable => true,
+  :via => nil,
+  :via_options => nil
 }
