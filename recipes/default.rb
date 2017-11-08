@@ -32,7 +32,13 @@ cookbook_file "#{node[:chef_client][:conf_dir]}/handlers/mail/mail.erb" do
   action :nothing
 end.run_action(:create)
 
-chef_gem "pony"
+chef_gem "mail" do
+  version "2.6.6"
+end
+
+chef_gem "pony" do
+  verison "1.11"
+end
 
 enable_handler = (node[:mail_handler][:enable]) ? :enable : :disable
 
