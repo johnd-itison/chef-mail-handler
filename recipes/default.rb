@@ -37,7 +37,7 @@ chef_gem "mail" do
 end
 
 chef_gem "pony" do
-  verison "1.11"
+  version "1.11"
 end
 
 enable_handler = (node[:mail_handler][:enable]) ? :enable : :disable
