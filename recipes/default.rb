@@ -34,10 +34,12 @@ end.run_action(:create)
 
 chef_gem "mail" do
   version "2.6.6"
+  compile_time true
 end
 
 chef_gem "pony" do
   version "1.11"
+  compile_time true
 end
 
 enable_handler = (node[:mail_handler][:enable]) ? :enable : :disable
